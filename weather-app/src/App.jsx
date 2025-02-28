@@ -1,13 +1,8 @@
-import './App.css'
-import Map from './components/map'
+import "./App.css";
+import Map from "./components/map";
 
 function App() {
-
-
-  return (
-<Map/>
-    
-  )
+  return <Map/>;
 }
 
-export default App
+export default App;
