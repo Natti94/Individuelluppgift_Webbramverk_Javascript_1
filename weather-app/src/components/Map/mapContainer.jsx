@@ -1,4 +1,6 @@
 import { MapContainer, TileLayer } from "react-leaflet";
+import "leaflet/dist/leaflet.css";
+import "./style.css";
 
 function Map() {
   return (
