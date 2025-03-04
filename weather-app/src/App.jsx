@@ -1,7 +1,13 @@
 import "./App.css";
-import Map from "./components/Map/mapContainer.jsx";
+import Map from "./components/Map/mapContainer";
+import Weather from "./components/Weather/weatherData";
 
 function App() {
-  return <Map />;
+  return (
+    <>
+      <Map />
+      <Weather />
+    </>
+  );
 }
 export default App;
