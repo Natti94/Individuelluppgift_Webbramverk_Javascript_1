@@ -1,0 +1,9 @@
+.weather-text {
+  font-size: large;
+  font-family: "Courier New", Courier, monospace;
+}
+
+.weather-days {
+  text-align: left;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}

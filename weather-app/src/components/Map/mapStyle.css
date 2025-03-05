@@ -1,4 +1,9 @@
+.map-text {
+  font-size: small;
+  font-family: "Courier New", Courier, monospace;
+}
+
 .map {
   height: 50vh;
-  width: 50vh;
+  width: 100vh;
 }
