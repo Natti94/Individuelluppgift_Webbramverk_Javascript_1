@@ -1,11 +1,13 @@
-import { useState } from "react";
-import { Marker } from "react-leaflet";
+import { Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import "./marker.css"
 
-function Marker() {
-  const [markerPosition, setMarkerPosition] = useState(null);
-  const [weatherData, setWeatherData] = useState(null);
+function Mark({ pos }) {
+  if (!pos) return null;
+  return (
+    <Marker pos={pos}>
+      <Popup>Marked Location</Popup>
+    </Marker>
+  );
 }
 
-export default Marker;
+export default Mark;
