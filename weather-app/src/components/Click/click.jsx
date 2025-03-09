@@ -1,9 +1,7 @@
 import { useMapEvents } from "react-leaflet";
 
-function Click({ setMarkedPos }) {
-  useMapEvents("click", (e) => {
-    setMarkedPos(e.latlng);
-  });
+function Click({ setMarkedPosition }) {
+  useMapEvents({ click: (e) => setMarkedPosition(e.latlng) });
   return null;
 }
 

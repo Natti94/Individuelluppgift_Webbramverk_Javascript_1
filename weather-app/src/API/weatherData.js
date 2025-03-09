@@ -11,5 +11,3 @@ export async function WeatherData(lat, lon) {
     return null;
   }
 }
-
-
