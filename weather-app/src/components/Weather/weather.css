@@ -1,8 +1,20 @@
 .weather-info {
   z-index: 1000;
   position: absolute;
-  background-color: white;
-  outline-color: black;
-  outline-style: groove;
+  background-color: black;
   right: 0px;
+  width: 20vh;
+  padding-left: 10px;
+}
+
+.weather-info > h3 {
+  color: white;
+}
+
+.weather-info > h4 {
+  color: white;
+}
+
+.weather-info > p {
+  color: white;
 }

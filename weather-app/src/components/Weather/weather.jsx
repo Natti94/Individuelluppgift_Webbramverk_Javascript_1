@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { WeatherData } from "../../API/weatherData";
+import { WeatherData } from "../../API/data";
 import "./weather.css";
 
 function Weather({ markedPosition, setWeatherData, weatherData }) {
@@ -20,9 +20,17 @@ function Weather({ markedPosition, setWeatherData, weatherData }) {
   return (
     <>
       <div className="weather-info">
-        <h2 >WEATHER AT SELECTED LOCATION</h2>
-        <h3>temperature: {weatherData.main.temp}°C</h3>
-        <h3>weather: {weatherData.weather[0].description}</h3>
+        <h3>AT SELECTED LOCATION</h3>
+        <h4>Temperature:</h4>
+        <p>{weatherData.main.temp}°C</p>
+        <h4>Weather:</h4>
+        <p>{weatherData.weather[0].description}</p>
+        <h4>Time & Date:</h4>
+        <p>
+          {new Date(weatherData.dt * 1000).toLocaleTimeString()}
+          {" | "}
+          {new Date(weatherData.dt * 1000).toLocaleDateString()}
+        </p>
       </div>
     </>
   );
