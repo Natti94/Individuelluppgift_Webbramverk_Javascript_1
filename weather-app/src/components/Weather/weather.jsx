@@ -1,26 +1,30 @@
 import { useEffect } from "react";
 import { WeatherData } from "../../API/weatherData";
+import "./weather.css";
 
 function Weather({ markedPosition, setWeatherData, weatherData }) {
   useEffect(() => {
     if (!markedPosition) return;
     const getWeather = async () => {
-      const data = await WeatherData({
-        lat: markedPosition.lat,
-        lng: markedPosition.lng,
-      });
+      const data = await WeatherData(markedPosition.lat, markedPosition.lng);
+      console.log(
+        "Fetching weather for:",
+        markedPosition.lat,
+        markedPosition.lng
+      );
       setWeatherData(data);
     };
     getWeather();
   }, [markedPosition, setWeatherData]);
   if (!weatherData) return null;
   return (
-    <div>
-      <h2>weather at selected location</h2>
-      <p>temperature: {weather.main.temp}</p>
-      <p>weather: {weatherData.weather[0].description}</p>
-    </div>
+    <>
+      <div className="weather-info">
+        <h2 >WEATHER AT SELECTED LOCATION</h2>
+        <h3>temperature: {weatherData.main.temp}°C</h3>
+        <h3>weather: {weatherData.weather[0].description}</h3>
+      </div>
+    </>
   );
 }
-
 export default Weather;
