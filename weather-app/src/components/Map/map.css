@@ -1,6 +1,5 @@
 .leaflet-container {
-height: 50vh;
-width: 100vh;
-justify-self:center;
+  height: 50vh;
+  width: 100vh;
+  justify-self: center;
 }
-

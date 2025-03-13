@@ -8,23 +8,23 @@ import "leaflet/dist/leaflet.css";
 import "./map.css";
 
 function Map() {
-  const [position, setPosition] = useState(null);
-  const [WeatherData, setWeatherData] = useState(null);
+  const [MyPosition] = useState(null);
+  const [weatherData, setWeatherData] = useState(null);
   const [markedPosition, setMarkedPosition] = useState(null);
   return (
     <>
-      <MapContainer>
+      <MapContainer MyPosition={MyPosition} zoom={6}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
         <Click setMarkedPosition={setMarkedPosition} />
-        <Location position={setPosition} />
+        <Location MyPosition={MyPosition} />
         <Mark markedPosition={markedPosition} />
         <Weather
           markedPosition={markedPosition}
           setWeatherData={setWeatherData}
-          weatherData={WeatherData}
+          weatherData={weatherData}
         />
       </MapContainer>
     </>

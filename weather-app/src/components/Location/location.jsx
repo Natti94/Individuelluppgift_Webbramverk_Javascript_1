@@ -1,9 +1,17 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 
-function Location() {
-  navigator.geolocation.getCurrentPosition(function (pos) {
-    setPosition([pos.coords.latitude, pos.coords.longitude]);
-  });
+function Location({ MyPosition }) {
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        MyPosition([position.coords.longitude, position.coords.latitude]);
+      },
+      (error) => {
+        console.error("error getting location", error);
+      }
+    );
+  }, [MyPosition]);
+  return null;
 }
 
 export default Location;
