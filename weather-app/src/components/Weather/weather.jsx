@@ -35,4 +35,5 @@ function Weather({ markedPosition, setWeatherData, weatherData }) {
     </>
   );
 }
+
 export default Weather;
