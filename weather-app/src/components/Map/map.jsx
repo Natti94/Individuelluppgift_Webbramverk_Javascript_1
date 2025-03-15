@@ -13,7 +13,7 @@ function Map() {
   const [markedPosition, setMarkedPosition] = useState(null);
   return (
     <>
-      <MapContainer MyPosition={MyPosition || [0, 0]} zoom={6}>
+      <MapContainer center={[0, 0]} zoom={5}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
