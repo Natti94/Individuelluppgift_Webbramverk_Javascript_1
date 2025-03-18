@@ -1,16 +1,17 @@
 import { useEffect } from "react";
+import { LocationData } from "../../API/location";
 
-function Location({ MyPosition }) {
+function Location({ setMyPosition }) {
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition(
-      (position) => {
-        MyPosition([position.coords.longitude, position.coords.latitude]);
-      },
-      (error) => {
-        console.error("error getting location", error);
+    async function fetchLocation() {
+      const data = await LocationData();
+      if (data && data.latitude && data.longitude) {
+        setMyPosition([data.latitude, data.longitude]);
       }
-    );
+    }
+    fetchLocation();
   }, [setMyPosition]);
+
   return null;
 }
 

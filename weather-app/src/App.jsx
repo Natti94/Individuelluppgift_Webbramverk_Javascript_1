@@ -1,4 +1,4 @@
-import Favourite from "./components/Favourite/favourite";
+import Favourite from "./components/Favourite/Favourite";
 import Search from "./components/Search/search";
 import Map from "./components/Map/map";
 import "./global.css";
@@ -11,7 +11,7 @@ function App() {
           <Favourite />
         </div>
         <div className="Search">
-          <Search />
+        <Search />
         </div>
         <div className="Map">
           <Map />

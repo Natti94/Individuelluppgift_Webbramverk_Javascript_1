@@ -8,7 +8,6 @@ export async function WeatherData(lat, lon) {
   } catch (error) {
     console.error("error fetching weather data", error);
     return null;
-  }
-
+  } 
 }
 
