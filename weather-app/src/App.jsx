@@ -11,7 +11,7 @@ function App() {
           <Favourite />
         </div>
         <div className="Search">
-        <Search />
+          <Search />
         </div>
         <div className="Map">
           <Map />

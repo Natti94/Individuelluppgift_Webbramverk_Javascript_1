@@ -1,12 +1,12 @@
-export async function searchData(setSearch) {
-    const apiUrl_location = "https://nominatim.openstreetmap.org";
+export async function SearchData(lat, lon) {
+    const apiKey = import.meta.env.VITE_SEARCH_API_KEY;
+    const apiUrl_search = `https://api.openweathermap.org/geo/1.0/direct?q=London&limit=1&appid=${apiKey}`;
     try {
-        const responseLocation = await fetch(apiUrl_location);
-        const DataSearch = await responseLocation.json();
-        if (DataSearch.lat && DataSearch.lon) {
-            setSearch([DataSearch[0].lat, DataSearch[0].lon]);
-        }
+        const responseSearch = await fetch(apiUrl_search);
+        const DataSearch = await responseSearch.json();
+        return DataSearch;
     } catch (error) {
-        console.error("error fetching location data", error);
+        console.error("error fetching search data", error);
+        return null;
     }
 }

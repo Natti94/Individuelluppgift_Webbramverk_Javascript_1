@@ -7,7 +7,6 @@ import Weather from "../Weather/weather";
 import "leaflet/dist/leaflet.css";
 import "./map.css";
 
-
 function Map() {
   const [MyPosition, setMyPosition] = useState([51.505, -0.09]);
   const [weatherData, setWeatherData] = useState(null);
