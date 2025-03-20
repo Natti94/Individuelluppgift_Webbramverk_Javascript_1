@@ -3,7 +3,7 @@ import { useState } from "react";
 import Click from "../Click/click";
 import Location from "../Location/location";
 import Mark from "../Marker/marker";
-import Search from "../Search/search"
+import Search from "../Search/search";
 import Weather from "../Weather/weather";
 import "leaflet/dist/leaflet.css";
 import "./map.css";

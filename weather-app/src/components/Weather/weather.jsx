@@ -30,9 +30,7 @@ function Weather({ markedPosition, setWeatherData, weatherData }) {
         <p></p>
       </div>
     </>
-    
   );
-  
 }
 
 export default Weather;

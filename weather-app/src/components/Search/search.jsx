@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { SearchData } from "../../API/search";
-import "./search.css"
+import "./search.css";
 
 function Search({ searchResult, setSearchData }) {
   const [query, setQuery] = useState("");
