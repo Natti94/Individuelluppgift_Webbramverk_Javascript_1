@@ -1,19 +1,26 @@
-import Favourite from "./components/Favourite/Favourite";
-import Search from "./components/Search/search";
+import { useState } from "react";
 import Map from "./components/Map/map";
-import "./global.css";
+import Favourite from "./components/Favourite/favourite";
 
 function App() {
+  const [searchInput, setSearchInput] = useState(null);
+  const [markedPosition, setMarkedPosition] = useState(null);
+  const [favorites, setFavorites] = useState([]);
+
+  const addToFavorites = (locationData) => {
+    setFavorites((prev) => [...prev, locationData]);
+  };
+
   return (
     <>
-      <div className="page">
-        <div className="Favourite">
-          <Favourite />
-        </div>
-        <div className="Map">
-          <Map />
-        </div>
-      </div>
+      <Map
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+        markedPosition={markedPosition}
+        setMarkedPosition={setMarkedPosition}
+        addToFavorites={addToFavorites}
+      />
+      <Favourite favorites={favorites} />
     </>
   );
 }
