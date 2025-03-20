@@ -5,11 +5,11 @@ import "./weather.css";
 function Weather({ markedPosition, setWeatherData, weatherData }) {
   useEffect(() => {
     if (!markedPosition) return;
-    const getWeather = async function () {
-      const data = await WeatherData(markedPosition.latitude, markedPosition.longtitude);
+    async function fetchWeather() {
+      const data = await WeatherData(markedPosition.lat, markedPosition.lng);
       setWeatherData(data);
-    };
-    getWeather();
+    }
+    fetchWeather();
   }, [markedPosition, setWeatherData]);
   if (!weatherData) return;
   return (
