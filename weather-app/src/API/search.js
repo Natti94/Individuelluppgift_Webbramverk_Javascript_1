@@ -7,6 +7,7 @@ export async function SearchData(setSearch) {
             setSearch([DataSearch[0].lat, DataSearch[0].lon]);
         }
     } catch (error) {
-        console.error("error fetching location data", error);
+        console.error("error fetching search data", error);
+        return null;
     }
 }

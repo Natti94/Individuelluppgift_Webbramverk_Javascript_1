@@ -17,7 +17,7 @@ function Weather({ markedPosition, setWeatherData, weatherData }) {
       <div className="weather-info">
         <h3>AT SELECTED LOCATION</h3>
         <h4>Temperature:</h4>
-        <p>{weatherData.main.temp}"°C"</p>
+        <p>{weatherData.main.temp}°C</p>
         <h4>Weather:</h4>
         <p>{weatherData.weather[0].description}</p>
         <h4>Time & Date:</h4>
@@ -30,7 +30,9 @@ function Weather({ markedPosition, setWeatherData, weatherData }) {
         <p></p>
       </div>
     </>
+    
   );
+  
 }
 
 export default Weather;
