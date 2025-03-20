@@ -5,11 +5,11 @@ import "./weather.css";
 function Weather({ markedPosition, setWeatherData, weatherData }) {
   useEffect(() => {
     if (!markedPosition) return;
-    const getWeather = async function() {
+    async function fetchWeather() {
       const data = await WeatherData(markedPosition.lat, markedPosition.lng);
       setWeatherData(data);
-    };
-    getWeather();
+    }
+    fetchWeather();
   }, [markedPosition, setWeatherData]);
   if (!weatherData) return;
   return (
@@ -27,8 +27,7 @@ function Weather({ markedPosition, setWeatherData, weatherData }) {
           {new Date(weatherData.dt * 1000).toLocaleDateString()}
         </p>
         <h4>Coming Days:</h4>
-        <p>
-        </p>
+        <p></p>
       </div>
     </>
   );

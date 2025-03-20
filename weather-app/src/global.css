@@ -1,5 +1,5 @@
 :root {
-  background-color: gray;
+  background-color:steelblue;
 }
 
 .page {
@@ -12,11 +12,6 @@
 
   font-family: monospace;
   font-size: large;
-}
-
-.Search {
-  grid-column: 7 / 7;
-  grid-row: 1;
 }
 
 .Map {

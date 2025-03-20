@@ -1,22 +1,30 @@
-import { useEffect } from "react";
-import { searchData } from "../../API/search";
+import { useEffect, useState } from "react";
+import { SearchData } from "../../API/search";
+import "./search.css"
 
-function Search({ searchData, setSearchData }) {
+function Search({ searchResult, setSearchData }) {
+  const [query, setQuery] = useState("");
   useEffect(() => {
-    const getSearch = async function() {
-    const data = await searchData(searchResult.lat, searchResult.lng)
-    setSearchData(data);
-    };
-  getSearch();
-
-    
-    
-  }, [searchData, setSearchData]
- if 
-
-
-  
- 
+    async function fetchSearch() {
+      if (searchResult?.lat && searchResult?.lng) {
+        const data = await SearchData(searchResult.lat, searchResult.lng);
+        setSearchData(data);
+      }
+    }
+    fetchSearch();
+  }, [searchResult, setSearchData]);
+  const handleInputChange = (e) => {
+    setQuery(e.target.value);
+  };
+  return (
+    <input
+      className="search"
+      type="text"
+      placeholder="enter location"
+      value={query}
+      onChange={handleInputChange}
+    />
+  );
 }
 
 export default Search;

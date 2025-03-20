@@ -10,9 +10,6 @@ function App() {
         <div className="Favourite">
           <Favourite />
         </div>
-        <div className="Search">
-        <Search />
-        </div>
         <div className="Map">
           <Map />
         </div>
