@@ -1,9 +1,7 @@
 .weather-info {
-  position: absolute;
-  pointer-events:none;
+  pointer-events: none;
   background-color: lavender;
   outline: 2px groove darkgray;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
   right: 0px;
   width: 20vh;
@@ -12,13 +10,14 @@
 }
 
 .weather-info > h3 {
-  font-family:sans-serif;
+  font-family: sans-serif;
   color: dimgray;
 }
 
 .weather-info > h4 {
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-  color:dimgray;
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: dimgray;
 }
 
 .weather-info > p {

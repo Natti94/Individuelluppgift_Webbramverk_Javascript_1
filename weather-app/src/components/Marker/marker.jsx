@@ -5,7 +5,7 @@ function Mark({ markedPosition }) {
   if (!markedPosition || markedPosition.lat || markedPosition.lng) return null;
   return (
     <Marker markedPosition={markedPosition}>
-      <Popup>Marked Location</Popup>
+      <Popup src="">Marked Location</Popup>
     </Marker>
   );
 }

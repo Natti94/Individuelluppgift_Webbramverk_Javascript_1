@@ -1,29 +1,25 @@
 import { useState, useEffect } from "react";
-import { WeatherData } from "../../API/weather";
+import { WeatherData, ForecastData } from "../../API/weather";
 import "./weather.css";
 
 function Weather({ searchInput, markedPosition, addToFavorites }) {
   const [weatherData, setWeatherData] = useState(null);
+  const [forecastData, setForecastData] = useState([]);
   useEffect(() => {
     let lat, lon;
     if (markedPosition) {
-      if (Array.isArray(markedPosition)) {
-        [lat, lon] = markedPosition;
-      } else {
-        lat = markedPosition.lat;
-        lon = markedPosition.lng || markedPosition.lon;
-      }
+      [lat, lon] = Array.isArray(markedPosition)
+        ? markedPosition
+        : [markedPosition.lat, markedPosition.lng || markedPosition.lon];
     } else if (searchInput) {
-      lat = searchInput.lat;
-      lon = searchInput.lon;
+      ({ lat, lon } = searchInput);
     }
     if (lat !== undefined && lon !== undefined) {
       WeatherData(lat, lon).then((data) => setWeatherData(data || null));
+      ForecastData(lat, lon).then((data) => setForecastData(data?.list || []));
     }
   }, [searchInput, markedPosition]);
-
   if (!weatherData) return null;
-
   const handleAddToFavorites = () => {
     const favoriteData = {
       id: Date.now(),
@@ -45,15 +41,33 @@ function Weather({ searchInput, markedPosition, addToFavorites }) {
       <p>{weatherData.weather[0].main}</p>
       <h4>Time & Date:</h4>
       <p>
-        {new Date(weatherData.dt * 1000).toLocaleTimeString()}
-        {" | "}
+        {new Date(weatherData.dt * 1000).toLocaleTimeString()} |{" "}
         {new Date(weatherData.dt * 1000).toLocaleDateString()}
       </p>
-      <h4>Coming Days:</h4>
-      <p></p>
       <button type="submit" onClick={handleAddToFavorites}>
         Add to Favorites
       </button>
+      {}
+      <h4>Coming Days:</h4>
+      <div>
+        {forecastData.length > 0 ? (
+          forecastData
+            .filter((item, index) => index % 8 === 0)
+            .map((day, index) => (
+              <div key={index}>
+                <p>
+                  <strong>
+                    {new Date(day.dt * 1000).toLocaleDateString()}
+                  </strong>
+                </p>
+                <p>{day.weather[0].description}</p>
+                <p>Temp: {day.main.temp}°C</p>
+              </div>
+            ))
+        ) : (
+          <p>No forecast data available.</p>
+        )}
+      </div>
     </div>
   );
 }

@@ -1,19 +1,33 @@
 :root {
-  background-color:steelblue;
+  background-color: steelblue;
 }
 
-.page {
+.Page {
   display: grid;
 }
 
 .Favourite {
-  grid-column: 1 / 1;
-  grid-row: 1;
-
   font-family: monospace;
   font-size: large;
+  grid-column: 1 / 1;
+  grid-row: 1;
 }
 
 .Map {
-  grid-column: 13 / 13;
+  outline-style: groove;
+  outline-color: black;
+  grid-column: 5 / 11;
+  grid-row: 1;
+  height: 50vh;
+  width: 100vh;
+  z-index: 999;
+}
+
+.Weather {
+  grid-column: 11 / 11;
+}
+
+.leaflet-container {
+  height: 50vh;
+  width: 100vh;
 }
