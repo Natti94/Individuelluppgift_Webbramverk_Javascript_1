@@ -22,12 +22,32 @@
   width: 100vh;
   z-index: 999;
 }
-
-.Weather {
-  grid-column: 11 / 11;
-}
-
 .leaflet-container {
   height: 50vh;
   width: 100vh;
+}
+
+.Weather {
+  background-color: lavender;
+  grid-column: 13 / 13;
+  outline: black groove;
+  width: 20vh;
+  padding-left: 10px;
+  top: 0;
+}
+
+.Weather > h3 {
+  font-family: sans-serif;
+  color: dimgray;
+}
+
+.Weather > h4 {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  color: dimgray;
+}
+
+.Weather > p {
+  font-family: monospace;
+  color: black;
 }

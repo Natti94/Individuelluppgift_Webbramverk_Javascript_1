@@ -28,14 +28,14 @@ function App() {
         <div className="Favourite">
           <Favourite favorites={favourites} />
         </div>
+        <div className="Weather">
+          <Weather
+            searchInput={searchInput}
+            markedPosition={markedPosition}
+            addToFavorites={addToFavorites}
+          />
+        </div>
       </div>
-      <div className="Weather">
-        <Weather
-             searchInput={searchInput}
-             markedPosition={markedPosition}
-             addToFavorites={addToFavorites}
-           />
-    </div>
     </>
   );
 }

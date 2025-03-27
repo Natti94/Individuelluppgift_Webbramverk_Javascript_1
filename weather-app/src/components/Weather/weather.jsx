@@ -31,7 +31,7 @@ function Weather({ searchInput, markedPosition, addToFavorites }) {
     addToFavorites(favoriteData);
   };
   return (
-    <div className="weather-info">
+    <div>
       <h3>AT SELECTED LOCATION</h3>
       <h4>Location:</h4>
       <p>{weatherData.name}</p>
