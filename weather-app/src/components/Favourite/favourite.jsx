@@ -1,6 +1,7 @@
-function Favourite({ favourites = [] }) {
+import Weather from "../Weather/weather";
+function Favourite({ favourites = [Weather] }) {
   return (
-    <div className="favourite">
+    <div>
       <h3>⭐ Favourite Locations</h3>
       {favourites.length === 0 ? (
         <p>No favorite locations yet</p>

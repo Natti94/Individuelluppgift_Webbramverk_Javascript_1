@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { WeatherData, ForecastData } from "../../API/weather";
-import "./weather.css";
 
 function Weather({ searchInput, markedPosition, addToFavorites }) {
   const [weatherData, setWeatherData] = useState(null);
