@@ -26,7 +26,7 @@ function App() {
           />
         </div>
         <div className="Favourite">
-          <Favourite favorites={favourites} />
+          <Favourite favourites={favourites} />
         </div>
         <div className="Weather">
           <Weather

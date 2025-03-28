@@ -1,5 +1,4 @@
-import Weather from "../Weather/weather";
-function Favourite({ favourites = [Weather] }) {
+function Favourite({ favourites = [] }) {
   return (
     <div>
       <h3>⭐ Favourite Locations</h3>

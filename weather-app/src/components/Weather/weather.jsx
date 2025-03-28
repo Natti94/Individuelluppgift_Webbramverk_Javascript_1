@@ -20,14 +20,14 @@ function Weather({ searchInput, markedPosition, addToFavorites }) {
   }, [searchInput, markedPosition]);
   if (!weatherData) return null;
   const handleAddToFavorites = () => {
-    const favoriteData = {
+    const favouriteData = {
       id: Date.now(),
       location: weatherData.name,
       temp: weatherData.main.temp,
       description: weatherData.weather[0].description,
       timestamp: Math.floor(Date.now() / 1000),
     };
-    addToFavorites(favoriteData);
+    addToFavorites(favouriteData);
   };
   return (
     <div>
