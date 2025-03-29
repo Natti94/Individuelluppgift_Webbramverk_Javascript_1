@@ -2,6 +2,7 @@ import { useState } from "react";
 import Map from "./components/Map/map";
 import Favourite from "./components/Favourite/favourite";
 import Weather from "./components/Weather/weather";
+import handleDeleteFavourites from "./components/Weather/weather"
 import "leaflet/dist/leaflet.css";
 import "./global.css";
 
@@ -34,6 +35,7 @@ function App() {
             markedPosition={markedPosition}
             addToFavorites={addToFavorites}
           />
+          <button type="submit" onClick={handleDeleteFavourites}>Delete</button>
         </div>
       </div>
     </>

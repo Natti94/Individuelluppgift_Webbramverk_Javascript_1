@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import { WeatherData, ForecastData } from "../../API/weather";
 
-function Weather({ searchInput, markedPosition, addToFavorites }) {
+function Weather({
+  searchInput,
+  markedPosition,
+  addToFavourites,
+  deleteFavourites,
+}) {
   const [weatherData, setWeatherData] = useState(null);
   const [forecastData, setForecastData] = useState([]);
   useEffect(() => {
@@ -20,14 +25,25 @@ function Weather({ searchInput, markedPosition, addToFavorites }) {
   }, [searchInput, markedPosition]);
   if (!weatherData) return null;
   const handleAddToFavorites = () => {
-    const favouriteData = {
+    const favouriteDataAdd = {
       id: Date.now(),
       location: weatherData.name,
       temp: weatherData.main.temp,
       description: weatherData.weather[0].description,
       timestamp: Math.floor(Date.now() / 1000),
     };
-    addToFavorites(favouriteData);
+    addToFavourites(favouriteDataAdd);
+  };
+  if (!weatherData) return null;
+  const handleDeleteFavourites = () => {
+    const favouriteDataDelete = {
+      id: Date.now(),
+      location: weatherData.name,
+      temp: weatherData.main.temp,
+      description: weatherData.weather[0].description,
+      timestamp: Math.floor(Date.now() / 1000),
+    };
+    deleteFavourites(favouriteDataDelete);
   };
   return (
     <div>
