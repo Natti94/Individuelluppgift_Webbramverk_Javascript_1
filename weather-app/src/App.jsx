@@ -2,17 +2,18 @@ import { useState } from "react";
 import Map from "./components/Map/map";
 import Favourite from "./components/Favourite/favourite";
 import Weather from "./components/Weather/weather";
-import handleDeleteFavourites from "./components/Weather/weather"
 import "leaflet/dist/leaflet.css";
 import "./global.css";
 
 function App() {
   const [searchInput, setSearchInput] = useState(null);
   const [markedPosition, setMarkedPosition] = useState(null);
-  const [favourites, setFavorites] = useState([]);
-
-  const addToFavorites = (locationData) => {
-    setFavorites((prev) => [...prev, locationData]);
+  const [favourites, setFavourites] = useState([]);
+  const addToFavourites = (locationData) => {
+    setFavourites((prev) => [...prev, locationData]);
+  };
+  const removeFromFavourites = (id) => {
+    setFavourites((prev) => prev.splice((fav) => fav.id !== id));
   };
   return (
     <>
@@ -23,19 +24,21 @@ function App() {
             setSearchInput={setSearchInput}
             markedPosition={markedPosition}
             setMarkedPosition={setMarkedPosition}
-            addToFavorites={addToFavorites}
+            addToFavorites={addToFavourites}
           />
         </div>
         <div className="Favourite">
           <Favourite favourites={favourites} />
+          <button type="submit" onClick={removeFromFavourites}>
+            delete favourite
+          </button>
         </div>
         <div className="Weather">
           <Weather
             searchInput={searchInput}
             markedPosition={markedPosition}
-            addToFavorites={addToFavorites}
+            addToFavourites={addToFavourites}
           />
-          <button type="submit" onClick={handleDeleteFavourites}>Delete</button>
         </div>
       </div>
     </>

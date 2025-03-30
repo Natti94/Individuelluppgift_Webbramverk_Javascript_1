@@ -1,14 +1,9 @@
 import { useState, useEffect } from "react";
-import { WeatherData, ForecastData } from "../../API/weather";
+import { WeatherData, ForeCastData } from "../../API/weather";
 
-function Weather({
-  searchInput,
-  markedPosition,
-  addToFavourites,
-  deleteFavourites,
-}) {
+function Weather({ searchInput, markedPosition, addToFavourites }) {
   const [weatherData, setWeatherData] = useState(null);
-  const [forecastData, setForecastData] = useState([]);
+  const [foreCastData, setForeCastData] = useState([]);
   useEffect(() => {
     let lat, lon;
     if (markedPosition) {
@@ -20,11 +15,11 @@ function Weather({
     }
     if (lat !== undefined && lon !== undefined) {
       WeatherData(lat, lon).then((data) => setWeatherData(data || null));
-      ForecastData(lat, lon).then((data) => setForecastData(data?.list || []));
+      ForeCastData(lat, lon).then((data) => setForeCastData(data?.list || []));
     }
   }, [searchInput, markedPosition]);
   if (!weatherData) return null;
-  const handleAddToFavorites = () => {
+  const handleAddToFavourites = () => {
     const favouriteDataAdd = {
       id: Date.now(),
       location: weatherData.name,
@@ -33,17 +28,6 @@ function Weather({
       timestamp: Math.floor(Date.now() / 1000),
     };
     addToFavourites(favouriteDataAdd);
-  };
-  if (!weatherData) return null;
-  const handleDeleteFavourites = () => {
-    const favouriteDataDelete = {
-      id: Date.now(),
-      location: weatherData.name,
-      temp: weatherData.main.temp,
-      description: weatherData.weather[0].description,
-      timestamp: Math.floor(Date.now() / 1000),
-    };
-    deleteFavourites(favouriteDataDelete);
   };
   return (
     <div>
@@ -59,14 +43,14 @@ function Weather({
         {new Date(weatherData.dt * 1000).toLocaleTimeString()} |{" "}
         {new Date(weatherData.dt * 1000).toLocaleDateString()}
       </p>
-      <button type="submit" onClick={handleAddToFavorites}>
-        Add to Favorites
+      <button type="submit" onClick={handleAddToFavourites}>
+        add to Favorites
       </button>
       {}
-      <h4>Coming Days:</h4>
+      <h4>coming Days:</h4>
       <div>
-        {forecastData.length > 0 ? (
-          forecastData
+        {foreCastData.length > 0 ? (
+          foreCastData
             .filter((item, index) => index % 8 === 0)
             .map((day, index) => (
               <div key={index}>
@@ -80,7 +64,7 @@ function Weather({
               </div>
             ))
         ) : (
-          <p>No forecast data available.</p>
+          <p>no forecast data available.</p>
         )}
       </div>
     </div>
