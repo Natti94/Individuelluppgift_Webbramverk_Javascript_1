@@ -8,14 +8,14 @@
 
 .Favourite {
   font-family: monospace;
+  border-style: groove;
   font-size: large;
   grid-column: 1 / 1;
   grid-row: 1;
 }
 
 .Map {
-  outline-style: groove;
-  outline-color: black;
+  outline: black groove;
   grid-column: 5 / 11;
   grid-row: 1;
   height: 50vh;
@@ -28,26 +28,8 @@
 }
 
 .Weather {
-  background-color: lavender;
   grid-column: 13 / 13;
-  outline: black groove;
+  top: 0;
   width: 20vh;
   padding-left: 10px;
-  top: 0;
-}
-
-.Weather > h3 {
-  font-family: sans-serif;
-  color: dimgray;
-}
-
-.Weather > h4 {
-  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
-    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  color: dimgray;
-}
-
-.Weather > p {
-  font-family: monospace;
-  color: black;
 }

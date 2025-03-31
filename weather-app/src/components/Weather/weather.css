@@ -1,0 +1,14 @@
+.weather-section > h3 {
+    font-family: sans-serif;
+  }
+  
+  .Weather > h4 {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+      "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+    color: dimgray;
+  }
+  
+  .Weather > p {
+    font-family: monospace;
+    color: white;
+  }

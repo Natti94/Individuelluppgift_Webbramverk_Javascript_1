@@ -28,10 +28,10 @@ function App() {
           />
         </div>
         <div className="Favourite">
-          <Favourite favourites={favourites} />
           <button type="submit" onClick={removeFromFavourites}>
-            delete favourite
+            delete favourites
           </button>
+          <Favourite favourites={favourites} />
         </div>
         <div className="Weather">
           <Weather

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { WeatherData, ForeCastData } from "../../API/weather";
+import "./weather.css";
 
 function Weather({ searchInput, markedPosition, addToFavourites }) {
   const [weatherData, setWeatherData] = useState(null);
@@ -30,8 +31,12 @@ function Weather({ searchInput, markedPosition, addToFavourites }) {
     addToFavourites(favouriteDataAdd);
   };
   return (
-    <div>
-      <h3>AT SELECTED LOCATION</h3>
+    <div className="weather-section">
+      <h3>📍</h3>
+      <p>Add this to location as favourite? ⭐</p>
+      <button type="submit" onClick={handleAddToFavourites}>
+      Favourite
+      </button>
       <h4>Location:</h4>
       <p>{weatherData.name}</p>
       <h4>Temperature:</h4>
@@ -43,9 +48,6 @@ function Weather({ searchInput, markedPosition, addToFavourites }) {
         {new Date(weatherData.dt * 1000).toLocaleTimeString()} |{" "}
         {new Date(weatherData.dt * 1000).toLocaleDateString()}
       </p>
-      <button type="submit" onClick={handleAddToFavourites}>
-        add to Favorites
-      </button>
       {}
       <h4>coming Days:</h4>
       <div>
