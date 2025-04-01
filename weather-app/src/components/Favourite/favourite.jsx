@@ -3,7 +3,7 @@ function Favourite({ favourites = [] }) {
     <div>
       <h3>⭐ Favourite Locations</h3>
       {favourites.length === 0 ? (
-        <p>No favorite locations yet</p>
+        <p>you have no favourites..</p>
       ) : (
         <ul>
           {favourites.map((fav) => (

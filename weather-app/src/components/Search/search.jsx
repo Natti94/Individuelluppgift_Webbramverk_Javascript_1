@@ -22,7 +22,7 @@ function Search({ setSearchInput, setMarkedPosition }) {
       <input
         className="search"
         type="text"
-        placeholder="enter location..."
+        placeholder="search location...🔍"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />

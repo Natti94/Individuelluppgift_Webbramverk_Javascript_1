@@ -15,6 +15,10 @@ function App() {
   const removeFromFavourites = (id) => {
     setFavourites((prev) => prev.splice((fav) => fav.id !== id));
   };
+
+  const UpdateFavourites = (id) => {
+    setFavourites((prev) => prev.map((fav) => fav.id === id));
+  };
   return (
     <>
       <div className="Page">
@@ -29,7 +33,10 @@ function App() {
         </div>
         <div className="Favourite">
           <button type="submit" onClick={removeFromFavourites}>
-            delete favourites
+            Delete
+          </button>
+          <button type="submit" onClick={UpdateFavourites}>
+            Update
           </button>
           <Favourite favourites={favourites} />
         </div>
