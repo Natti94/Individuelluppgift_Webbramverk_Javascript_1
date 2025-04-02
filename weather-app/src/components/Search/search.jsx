@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SearchData } from "../../API/search";
+import { SearchData } from "../../../backend/Services/Search/search";
 import "./search.css";
 
 function Search({ setSearchInput, setMarkedPosition }) {
@@ -7,7 +7,6 @@ function Search({ setSearchInput, setMarkedPosition }) {
   async function handleSearch(e) {
     e.preventDefault();
     if (!query.trim()) return;
-
     const data = await SearchData(query);
     if (data) {
       setSearchInput(data);
@@ -22,7 +21,7 @@ function Search({ setSearchInput, setMarkedPosition }) {
       <input
         className="search"
         type="text"
-        placeholder="search location...🔍"
+        placeholder="search me...            🔍"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />

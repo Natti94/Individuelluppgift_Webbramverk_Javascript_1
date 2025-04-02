@@ -1,18 +1,23 @@
-import { useEffect } from "react";
-import { LocationData } from "../../API/location";
+import { useState } from "react";
+import { getUserLocation } from "../../../backend/Services/Location/Location";
 
 function Location({ setMyPosition }) {
-  useEffect(() => {
-    async function fetchLocation() {
-      const data = await LocationData();
-      if (data && data.latitude && data.longitude) {
-        setMyPosition([data.latitude, data.longitude]);
-      }
-    }
-    fetchLocation();
-  }, [setMyPosition]);
+  const [loading, setLoading] = useState(false);
 
-  return null;
+  const handleGetLocation = () => {
+    setLoading(true);
+    getUserLocation(setMyPosition, setLoading); // Get the user's location and set it
+  };
+
+  return (
+    <button
+      onClick={handleGetLocation}
+      disabled={loading}
+      style={{ position: "absolute", top: 10, right: 10, zIndex: 1000 }}
+    >
+      {loading ? "Locating..." : "Get My Location"}
+    </button>
+  );
 }
 
 export default Location;
