@@ -64,21 +64,25 @@ function Weather({ markedPosition, addToFavourites, myPosition, locationFetched 
           alt="weather icon"
         />
       </div>
-      <div className="forecast-section">
+      <div className="forecast-info">
         <h4>5-Day Forecast:</h4>
-        <div className="forecast-container">
+        <div>
           {foreCastData.length > 0 ? (
             foreCastData
               .filter((_, index) => index % 8 === 0)
               .map((day, index) => (
                 <div key={index} className="forecast-card">
+                  <h4>Time & Date:</h4>
                   <p>{new Date(day.dt * 1000).toLocaleDateString()}</p>
+                  <h4>Temperature:</h4>
+                  <p>{day.main.temp}°C</p>
+                  <h4>Weather:</h4>
+                  <p>{day.weather[0].description}</p>
                   <img
                     src={`https://openweathermap.org/img/wn/${day.weather[0].icon}.png`}
                     alt="forecast icon"
                   />
-                  <p>{day.main.temp}°C</p>
-                  <p>{day.weather[0].description}</p>
+                  {"__________"}
                 </div>
               ))
           ) : (

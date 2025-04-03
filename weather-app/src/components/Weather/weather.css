@@ -47,4 +47,5 @@
 .forecast-info {
   font-family: "Courier New", Courier, monospace;
   grid-column: 8 / 13;
+  padding-left: 30px;
 }
