@@ -1,7 +1,7 @@
 .weather-section {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 20px;
+  gap: 5px;
 }
 
 .weather-info {

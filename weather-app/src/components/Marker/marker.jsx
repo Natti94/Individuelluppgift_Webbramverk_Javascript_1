@@ -1,20 +1,11 @@
 import { Marker, Popup } from "react-leaflet";
-import "leaflet/dist/leaflet.css";
-import "./marker.css";
 
 function Mark({ markedPosition }) {
-  if (
-    !markedPosition ||
-    markedPosition.lat === undefined ||
-    markedPosition.lng === undefined
-  )
-    return null;
+  if (!markedPosition || !markedPosition.lat || !markedPosition.lng) return null;
   return (
     <Marker position={[markedPosition.lat, markedPosition.lng]}>
       <Popup>
-        <div className="popup">
-          <p>Marked Location</p>
-        </div>
+        <p>Marked Location</p>
       </Popup>
     </Marker>
   );

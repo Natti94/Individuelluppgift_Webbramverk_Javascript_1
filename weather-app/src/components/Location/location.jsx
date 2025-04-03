@@ -1,22 +1,19 @@
 import { useState } from "react";
-import { getUserLocation } from "../../../backend/Services/Location/Location";
+import { getUserLocation } from "../../../backend/Services/Location/location";
 
-function Location({ setMyPosition }) {
+function Location({ setMyPosition, setLocationFetched }) {
   const [loading, setLoading] = useState(false);
-
-  const handleGetLocation = () => {
+  const getLocation = () => {
+    setLocationFetched(false);
     setLoading(true);
-    getUserLocation(setMyPosition, setLoading); // Get the user's location and set it
+    getUserLocation(setMyPosition, setLoading, setLocationFetched);
   };
-
   return (
-    <button
-      onClick={handleGetLocation}
-      disabled={loading}
-      style={{ position: "absolute", top: 10, right: 10, zIndex: 1000 }}
-    >
-      {loading ? "Locating..." : "Get My Location"}
-    </button>
+    <div>
+      <button onClick={getLocation} disabled={loading}>
+        {loading ? "Fetching Location..." : "Get My Location"}
+      </button>
+    </div>
   );
 }
 

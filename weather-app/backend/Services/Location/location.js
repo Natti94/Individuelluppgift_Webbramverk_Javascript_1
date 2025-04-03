@@ -1,34 +1,38 @@
-export function getUserLocation(setMyPosition, setLoading) {
+export function getUserLocation(setMyPosition, setLoading, setLocationFetched) {
+  console.log("getUserLocation - Arguments:", { setMyPosition, setLoading, setLocationFetched });
+  console.log("Attempting to fetch user location...");
   setLoading(true);
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
       (position) => {
+        console.log("Geolocation success:", position.coords);
         setMyPosition([position.coords.latitude, position.coords.longitude]);
         setLoading(false);
+        if (typeof setLocationFetched === "function") {
+          setLocationFetched(true);
+        } else {
+          console.error("setLocationFetched is not a function:", setLocationFetched);
+        }
       },
       (error) => {
-        console.error("Error fetching location:", error.message);
+        console.error("Geolocation error:", error.message);
         alert(`Location Error: ${error.message}`);
         setLoading(false);
-      },
+        if (typeof setLocationFetched === "function") {
+          setLocationFetched(false);
+        } else {
+          console.error("setLocationFetched is not a function:", setLocationFetched);
+        }
+      }
     );
   } else {
-    console.error("Geolocation is not supported by this browser.");
+    console.error("Geolocation not supported by this browser.");
     alert("Geolocation is not supported by this browser.");
     setLoading(false);
-  }
-}
-
-export async function fetchLocationData(setMyPosition) {
-  const apiUrl_location = "https://geolocation-db.com/json/";
-  try {
-    const responseLocation = await fetch(apiUrl_location);
-    const DataLocation = await responseLocation.json();
-    if (DataLocation.lat && DataLocation.lon) {
-      setMyPosition([DataLocation.lat, DataLocation.lon]);
+    if (typeof setLocationFetched === "function") {
+      setLocationFetched(false);
+    } else {
+      console.error("setLocationFetched is not a function:", setLocationFetched);
     }
-  } catch (error) {
-    console.error("Error fetching location data", error);
-    alert("Failed to fetch location from external API.");
   }
 }

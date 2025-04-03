@@ -9,11 +9,10 @@ function Search({ setSearchInput, setMarkedPosition }) {
     if (!query.trim()) return;
     const data = await SearchData(query);
     if (data) {
-      setSearchInput(data);
-      setMarkedPosition(data);
+      setSearchInput({ lat: data.lat, lng: data.lon });
+      setMarkedPosition({ lat: data.lat, lng: data.lon });
     } else {
-      setSearchInput(null);
-      setMarkedPosition(null);
+      alert("Location not found!");
     }
   }
   return (
@@ -21,7 +20,7 @@ function Search({ setSearchInput, setMarkedPosition }) {
       <input
         className="search"
         type="text"
-        placeholder="search me...            🔍"
+        placeholder="Search location..."
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />

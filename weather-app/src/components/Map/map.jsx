@@ -1,23 +1,38 @@
-import { useState } from "react";
-import { getUserLocation } from "../../../backend/Services/Location/Location";
+import { MapContainer, TileLayer, useMap } from "react-leaflet";
+import { useState, useEffect } from "react";
+import Click from "../Click/click";
+import Mark from "../Marker/marker";
+import Search from "../Search/search";
 
-function Location({ setMyPosition }) {
-  const [loading, setLoading] = useState(false);
+function MapUpdater({ position }) {
+  const map = useMap();
+  useEffect(() => {
+    if (position) {
+      map.flyTo(position, 13);
+    }
+  }, [position, map]);
+  return null;
+}
+function Map({ markedPosition, setMarkedPosition, setSearchInput, setMyPosition, myPosition }) {
+  const [localPosition, setLocalPosition] = useState([51.505, -0.09]);
 
-  const handleGetLocation = () => {
-    setLoading(true);
-    getUserLocation(setMyPosition, setLoading); // Get the user's location and set it
-  };
-
+  useEffect(() => {
+    if (myPosition) {
+      setLocalPosition(myPosition);
+    }
+  }, [myPosition]);
   return (
-    <button
-      onClick={handleGetLocation}
-      disabled={loading}
-      style={{ position: "absolute", top: 10, right: 10, zIndex: 1000 }}
-    >
-      {loading ? "Locating..." : "Get My Location"}
-    </button>
+    <MapContainer center={localPosition} zoom={5}>
+      <TileLayer
+        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        attribution='© OpenStreetMap contributors'
+      />
+      <MapUpdater position={myPosition || localPosition} />
+      <Click setMarkedPosition={setMarkedPosition} />
+      <Mark markedPosition={markedPosition} />
+      <Search setSearchInput={setSearchInput} setMarkedPosition={setMarkedPosition} />
+    </MapContainer>
   );
 }
 
-export default Location;
+export default Map;
