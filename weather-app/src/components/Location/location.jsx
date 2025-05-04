@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { getUserLocation } from "../../../backend/Location/location";
+import { getUserLocation } from "../../Services/Location/location";
 
 function Location({ setMyPosition, setLocationFetched }) {
   const [loading, setLoading] = useState(false);
