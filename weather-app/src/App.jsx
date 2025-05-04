@@ -3,7 +3,7 @@ import Map from "./components/Map/map";
 import Favourite from "./components/Favourite/favourite";
 import Location from "./components/Location/location";
 import Weather from "./components/Weather/weather";
-import { WeatherData } from "../backend/Services/Weather/weather";
+import { WeatherData } from "../backend/Weather/weather";
 import "leaflet/dist/leaflet.css";
 import "./global.css";
 

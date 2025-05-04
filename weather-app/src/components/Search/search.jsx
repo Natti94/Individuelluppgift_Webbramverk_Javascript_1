@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { SearchData } from "../../../backend/Services/Search/search";
+import { SearchData } from "../../../backend/Search/search"
 import "./search.css";
 
 function Search({ setSearchInput, setMarkedPosition }) {
